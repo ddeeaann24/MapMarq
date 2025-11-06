@@ -3,23 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_buildings">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.example.mapmarq_draft1.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/nav_buildings"
+        android:name="com.example.mapmarq_draft1.ui.buildings.BuildingsFragment"
+        android:label="@string/menu_buildings"
+        tools:layout="@layout/fragment_buildings" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.mapmarq_draft1.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_classrooms"
+        android:name="com.example.mapmarq_draft1.ui.classrooms.ClassroomsFragment"
+        android:label="@string/menu_classrooms"
+        tools:layout="@layout/fragment_classrooms" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.mapmarq_draft1.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_saved_locations"
+        android:name="com.example.mapmarq_draft1.ui.saved_locations.SavedLocationsFragment"
+        android:label="@string/menu_saved_locations"
+        tools:layout="@layout/fragment_saved_locations" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.example.mapmarq_draft1.ui.settings.SettingsFragment"
+        android:label="@string/menu_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

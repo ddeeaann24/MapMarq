@@ -22,4 +22,8 @@
     <style name="Theme.MapMarq_draft1.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.MapMarq_draft1.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="DrawerTextStyle" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textSize">20sp</item>
+    </style>
 </resources>
