@@ -4,32 +4,34 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mapmarq_draft1.R;
 
 public class SavedLocationsFragment extends Fragment {
 
-    private SavedLocationsViewModel savedLocationsViewModel;
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_saved_locations, container, false);
+    }
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        savedLocationsViewModel =
-                new ViewModelProvider(this).get(SavedLocationsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_saved_locations, container, false);
-        final TextView textView = root.findViewById(R.id.text_saved_locations);
-        savedLocationsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-        return root;
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        String[] savedLocations = {"Marquette University", "Home", "Work", "Favorite Coffee Shop"};
+
+        RecyclerView recyclerView = view.findViewById(R.id.saved_locations_recycler_view);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+
+        SavedLocationsAdapter adapter = new SavedLocationsAdapter(savedLocations);
+        recyclerView.setAdapter(adapter);
     }
 }
