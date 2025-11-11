@@ -23,15 +23,6 @@ public class SavedLocationsFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
 
-        String[] savedLocations = {"Marquette University", "Home", "Work", "Favorite Coffee Shop"};
-
-        RecyclerView recyclerView = view.findViewById(R.id.saved_locations_recycler_view);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-
-        SavedLocationsAdapter adapter = new SavedLocationsAdapter(savedLocations);
-        recyclerView.setAdapter(adapter);
     }
 }
