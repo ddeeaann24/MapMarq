@@ -11,4 +11,52 @@
     <string name="menu_classrooms">Classrooms</string>
     <string name="menu_saved_locations">Saved Locations</string>
     <string name="menu_settings">Settings</string>
+    <string-array name="buildings">
+        <item>Lalumiere</item>
+        <item>Cudahy</item>
+    </string-array>
+    <string-array name="lalumiere_rooms">
+        <item>108</item>
+        <item>114</item>
+        <item>130</item>
+        <item>136</item>
+        <item>140</item>
+        <item>154</item>
+        <item>160</item>
+        <item>166</item>
+        <item>172</item>
+        <item>175</item>
+        <item>180</item>
+        <item>184</item>
+        <item>186</item>
+        <item>188</item>
+        <item>192</item>
+        <item>202</item>
+        <item>204</item>
+        <item>206</item>
+        <item>210</item>
+        <item>216</item>
+        <item>222</item>
+        <item>232</item>
+        <item>254</item>
+        <item>262</item>
+        <item>272</item>
+        <item>280</item>
+        <item>288</item>
+        <item>292</item>
+    </string-array>
+    <string-array name="cudahy_rooms">
+        <item>101</item>
+        <item>108</item>
+        <item>114</item>
+        <item>118</item>
+        <item>120</item>
+        <item>126</item>
+        <item>128</item>
+        <item>131</item>
+        <item>137</item>
+        <item>143</item>
+        <item>145</item>
+        <item>151</item>
+    </string-array>
 </resources>
