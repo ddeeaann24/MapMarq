@@ -6,13 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".ui.settings.SettingsFragment">
 
-    <!-- Change Theme UI -->
     <TextView
         android:id="@+id/textView_theme_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:text="Change theme"
+        android:text="Switch mode"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/button_change_theme"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,11 +23,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="24dp"
-        android:text="Theme"
+        android:text="Mode"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Change Language UI -->
     <TextView
         android:id="@+id/textView_language_label"
         android:layout_width="wrap_content"
