@@ -12,6 +12,9 @@ import android.app.AlertDialog;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
 import com.example.mapmarq_draft1.databinding.FragmentSavedLocationsBinding;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -58,6 +61,14 @@ public class SavedLocationsFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         savedLocationsAdapter = new SavedLocationsAdapter();
+        savedLocationsAdapter.setOnItemClickListener(location -> {
+            String[] parts = location.split(" - ");
+            String roomName = parts[1];
+            Bundle bundle = new Bundle();
+            bundle.putString("roomName", roomName);
+            NavController navController = Navigation.findNavController(requireView());
+            navController.navigate(R.id.action_nav_saved_locations_to_nav_classrooms_detail, bundle);
+        });
 
         // Set the new adapter on the RecyclerView
         recyclerView.setAdapter(savedLocationsAdapter);
@@ -127,5 +138,3 @@ public class SavedLocationsFragment extends Fragment {
         binding = null;
     }
 }
-
-

@@ -1,5 +1,6 @@
 package com.example.mapmarq_draft1.ui.saved_locations;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,15 @@ import java.util.List;
 public class SavedLocationsAdapter extends RecyclerView.Adapter<SavedLocationsAdapter.LocationViewHolder> {
 
     private List<String> locations = new ArrayList<>();
+    private OnItemClickListener listener;
+
+    public interface OnItemClickListener {
+        void onItemClick(String location);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
 
     @NonNull
     @Override
@@ -29,6 +39,12 @@ public class SavedLocationsAdapter extends RecyclerView.Adapter<SavedLocationsAd
     public void onBindViewHolder(@NonNull LocationViewHolder holder, int position) {
         String location = locations.get(position);
         holder.bind(location);
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onItemClick(location);
+            }
+        });
     }
 
     @Override

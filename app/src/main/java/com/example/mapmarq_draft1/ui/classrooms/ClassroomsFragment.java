@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.mapmarq_draft1.R;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class ClassroomsFragment extends Fragment {
@@ -29,6 +30,13 @@ public class ClassroomsFragment extends Fragment {
 
     private final HashMap<Integer, PointF> laluCoordinates = new HashMap<>();
     private final HashMap<Integer, PointF> cudahyCoordinates = new HashMap<>();
+
+    private final String[] laluRooms = {"Select a room",
+            "108", "114", "130", "136", "140", "154", "160", "166",
+            "172", "175", "180", "184", "188", "192", "202"};
+    private final String[] cudahyRooms = {"Select a room",
+            "101", "108", "114", "118", "120", "126", "128", "131",
+            "137", "143", "145", "151"};
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -41,8 +49,6 @@ public class ClassroomsFragment extends Fragment {
 
         initializeCoordinates();
 
-        // The setOnTouchListener for dragging has been removed as requested.
-
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
                 R.array.buildings, R.layout.custom_spinner_item);
         adapter.setDropDownViewResource(R.layout.custom_spinner_item);
@@ -54,6 +60,27 @@ public class ClassroomsFragment extends Fragment {
             }
             return true;
         });
+
+        if (getArguments() != null) {
+            String roomName = getArguments().getString("roomName");
+            if (roomName != null) {
+                buildingSpinner.setVisibility(View.GONE);
+                String building = null;
+                int roomNumber = Integer.parseInt(roomName);
+
+                if (Arrays.asList(laluRooms).contains(roomName)) {
+                    building = "Lalumiere";
+                } else if (Arrays.asList(cudahyRooms).contains(roomName)) {
+                    building = "Cudahy";
+                }
+
+                if (building != null) {
+                    showRoom(building, roomNumber);
+                }
+            }
+        } else {
+            buildingSpinner.setVisibility(View.VISIBLE);
+        }
 
         return root;
     }
@@ -126,44 +153,48 @@ public class ClassroomsFragment extends Fragment {
             public void onClick(DialogInterface dialog, int which) {
                 String[] rooms = getResources().getStringArray(itemsId);
                 int selectedRoom = Integer.parseInt(rooms[which]);
-
-                if (building.equals("Lalumiere")) {
-                    if (selectedRoom >= 200) {
-                        floorPlanImage.setImageResource(R.drawable.lalu_ground);
-                    } else {
-                        floorPlanImage.setImageResource(R.drawable.lalu_basement);
-                    }
-                } else { // Cudahy
-                    floorPlanImage.setImageResource(R.drawable.cudahy_ground);
-                }
-                roomNumberText.setText(String.valueOf(selectedRoom));
-                floorPlanImage.setVisibility(View.VISIBLE);
-                roomNumberText.setVisibility(View.VISIBLE);
-
-
-                // --- Position the box using the stored coordinates ---
-                PointF coords = null;
-                if (building.equals("Lalumiere")) {
-                    coords = laluCoordinates.get(selectedRoom);
-                } else { // Cudahy
-                    coords = cudahyCoordinates.get(selectedRoom);
-                }
-
-                final PointF finalCoords = coords;
-                roomNumberText.post(() -> {
-                    if (finalCoords != null) {
-                        // If coordinates are found, use them.
-                        roomNumberText.setX(finalCoords.x);
-                        roomNumberText.setY(finalCoords.y);
-                    } else {
-                        // Otherwise, hide the box and log a warning.
-                        roomNumberText.setVisibility(View.GONE);
-                        Log.w("ClassroomsFragment", "No coordinates found for room " + selectedRoom + ". The red box will be hidden.");
-                    }
-                });
+                showRoom(building, selectedRoom);
             }
         });
         builder.show();
     }
-}
 
+    private void showRoom(String building, int selectedRoom) {
+        if (building.equals("Lalumiere")) {
+            if (selectedRoom >= 200) {
+                floorPlanImage.setImageResource(R.drawable.lalu_ground);
+            } else {
+                floorPlanImage.setImageResource(R.drawable.lalu_basement);
+            }
+            buildingSpinner.setSelection(0);
+        } else { // Cudahy
+            floorPlanImage.setImageResource(R.drawable.cudahy_ground);
+            buildingSpinner.setSelection(1);
+        }
+        roomNumberText.setText(String.valueOf(selectedRoom));
+        floorPlanImage.setVisibility(View.VISIBLE);
+        roomNumberText.setVisibility(View.VISIBLE);
+
+
+        // --- Position the box using the stored coordinates ---
+        PointF coords = null;
+        if (building.equals("Lalumiere")) {
+            coords = laluCoordinates.get(selectedRoom);
+        } else { // Cudahy
+            coords = cudahyCoordinates.get(selectedRoom);
+        }
+
+        final PointF finalCoords = coords;
+        roomNumberText.post(() -> {
+            if (finalCoords != null) {
+                // If coordinates are found, use them.
+                roomNumberText.setX(finalCoords.x);
+                roomNumberText.setY(finalCoords.y);
+            } else {
+                // Otherwise, hide the box and log a warning.
+                roomNumberText.setVisibility(View.GONE);
+                Log.w("ClassroomsFragment", "No coordinates found for room " + selectedRoom + ". The red box will be hidden.");
+            }
+        });
+    }
+}

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_buildings">
+    app:startDestination="@id/nav_buildings">
 
     <fragment
         android:id="@+id/nav_buildings"
@@ -15,17 +15,41 @@
         android:id="@+id/nav_classrooms"
         android:name="com.example.mapmarq_draft1.ui.classrooms.ClassroomsFragment"
         android:label="@string/menu_classrooms"
-        tools:layout="@layout/fragment_classrooms" />
+        tools:layout="@layout/fragment_classrooms" >
+        <argument
+            android:name="roomName"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_saved_locations"
         android:name="com.example.mapmarq_draft1.ui.saved_locations.SavedLocationsFragment"
         android:label="@string/menu_saved_locations"
-        tools:layout="@layout/fragment_saved_locations" />
+        tools:layout="@layout/fragment_saved_locations" >
+        <action
+            android:id="@+id/action_nav_saved_locations_to_nav_classrooms_detail"
+            app:destination="@id/nav_classrooms_detail" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_settings"
         android:name="com.example.mapmarq_draft1.ui.settings.SettingsFragment"
         android:label="@string/menu_settings"
         tools:layout="@layout/fragment_settings" />
+
+    <!-- This is the new destination for the detail view -->
+    <fragment
+        android:id="@+id/nav_classrooms_detail"
+        android:name="com.example.mapmarq_draft1.ui.classrooms.ClassroomsFragment"
+        android:label="@string/menu_classrooms"
+        tools:layout="@layout/fragment_classrooms" >
+        <argument
+            android:name="roomName"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+
 </navigation>

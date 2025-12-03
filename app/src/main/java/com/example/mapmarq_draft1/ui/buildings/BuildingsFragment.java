@@ -1,5 +1,6 @@
 package com.example.mapmarq_draft1.ui.buildings;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,9 +9,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
@@ -65,7 +68,9 @@ public class BuildingsFragment extends Fragment {
         Spinner dropDownMenu = root.findViewById(R.id.spinner);
 
         String[] buildings = buildingsWithCoords.keySet().toArray(new String[0]);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, buildings);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), R.layout.custom_spinner_item, buildings);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dropDownMenu.setAdapter(adapter);
 
         dropDownMenu.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
@@ -88,7 +93,7 @@ public class BuildingsFragment extends Fragment {
         mapView.setMultiTouchControls(true);
 
         GeoPoint startPoint = new GeoPoint(43.038721, -87.929846);
-        mapView.getController().setZoom(18.0f);
+        mapView.getController().setZoom(20.0f);
         mapView.getController().setCenter(startPoint);
 
         BoundingBox boundingBox = new BoundingBox(43.043, -87.927, 43.036, -87.933);

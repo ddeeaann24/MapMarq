@@ -13,7 +13,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:background="@drawable/spinner_outline_gray" />
+        android:textColor="#000000"
+        android:background="@color/blue_500" />
 
     <ImageView
         android:id="@+id/floor_plan_image"
@@ -28,7 +29,7 @@
         android:layout_height="wrap_content"
         android:background="#FF0000"
         android:padding="8dp"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
         android:visibility="gone" />
