@@ -106,7 +106,7 @@ public class ClassroomsFragment extends Fragment {
 
     private void showBuildingSelectionDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.BiggerDialog);
-        builder.setTitle("Select a building");
+        builder.setTitle(getString(R.string.select_building));
         builder.setItems(R.array.buildings, (dialog, which) -> {
             buildingSpinner.setSelection(which);
             if (which == 0) { // Lalumiere
@@ -120,7 +120,7 @@ public class ClassroomsFragment extends Fragment {
 
     private void showNumberSelectionDialog(int itemsId, String building) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.BiggerDialog);
-        builder.setTitle("Select a room");
+        builder.setTitle(getString(R.string.select_room));
         builder.setItems(itemsId, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -166,3 +166,4 @@ public class ClassroomsFragment extends Fragment {
         builder.show();
     }
 }
+
