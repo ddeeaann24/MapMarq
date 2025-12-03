@@ -1,0 +1,86 @@
+<resources>
+    <string name="app_name">MapMarq_draft1</string>
+    <string name="navigation_drawer_open">打开导航菜单</string>
+    <string name="navigation_drawer_close">关闭导航菜单</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">导航标题</string>
+    <string name="action_settings">设置</string>
+
+    <string name="building_name">建筑名称</string>
+    <string name="room_number">房间号码</string>
+    <string name="time_day">时间 / 日期</string>
+
+    <string name="menu_buildings">建筑</string>
+    <string name="menu_classrooms">教室</string>
+    <string name="menu_saved_locations">已保存的位置</string>
+    <string name="menu_settings">设置</string>
+    <string name="select_building">选择建筑</string>
+    <string name="select_room">选择房间</string>
+    <string name="switch_mode">切换模式</string>
+    <string name="mode">模式</string>
+    <string name="change_language">更改语言</string>
+    <string name="add_location">添加位置</string>
+    <string name="remove_location">删除位置</string>
+    <string name="select_remove_location">选择要删除的位置</string>
+    <string name="no_removable_locations">没有可删除的位置。</string>
+
+
+
+    <string-array name="buildings">
+        <item>Lalumiere</item>
+        <item>Cudahy</item>
+    </string-array>
+
+    <string-array name="lalumiere_rooms">
+        <item>108</item>
+        <item>114</item>
+        <item>130</item>
+        <item>136</item>
+        <item>140</item>
+        <item>154</item>
+        <item>160</item>
+        <item>166</item>
+        <item>172</item>
+        <item>175</item>
+        <item>180</item>
+        <item>184</item>
+        <item>186</item>
+        <item>188</item>
+        <item>192</item>
+        <item>202</item>
+        <item>204</item>
+        <item>206</item>
+        <item>210</item>
+        <item>216</item>
+        <item>222</item>
+        <item>232</item>
+        <item>254</item>
+        <item>262</item>
+        <item>272</item>
+        <item>280</item>
+        <item>288</item>
+        <item>292</item>
+    </string-array>
+
+    <string-array name="cudahy_rooms">
+        <item>101</item>
+        <item>108</item>
+        <item>114</item>
+        <item>118</item>
+        <item>120</item>
+        <item>126</item>
+        <item>128</item>
+        <item>131</item>
+        <item>137</item>
+        <item>143</item>
+        <item>145</item>
+        <item>151</item>
+    </string-array>
+
+    <string-array name="language_codes">
+        <item>en</item>
+        <item>es</item>
+        <item>zh</item>
+    </string-array>
+</resources>

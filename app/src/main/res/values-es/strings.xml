@@ -1,0 +1,85 @@
+<resources>
+    <string name="app_name">MapMarq_draft1</string>
+    <string name="navigation_drawer_open">Abrir menú de navegación</string>
+    <string name="navigation_drawer_close">Cerrar menú de navegación</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Encabezado de navegación</string>
+    <string name="action_settings">Configuración</string>
+
+    <string name="building_name">Nombre del edificio</string>
+    <string name="room_number">Número de sala</string>
+    <string name="time_day">Hora / Día</string>
+
+    <string name="menu_buildings">Edificios</string>
+    <string name="menu_classrooms">Aulas</string>
+    <string name="menu_saved_locations">Ubicaciones guardadas</string>
+    <string name="menu_settings">Configuración</string>
+    <string name="select_building">Seleccionar edificio</string>
+    <string name="select_room">Selecciona una sala</string>
+    <string name="switch_mode">Cambiar modo</string>
+    <string name="mode">Modo</string>
+    <string name="change_language">Cambiar idioma</string>
+    <string name="add_location">Agregar ubicación</string>
+    <string name="remove_location">Eliminar ubicación</string>
+    <string name="select_remove_location">Selecciona una ubicación para eliminar</string>
+    <string name="no_removable_locations">No hay ubicaciones para eliminar.</string>
+
+
+    <string-array name="buildings">
+        <item>Lalumiere</item>
+        <item>Cudahy</item>
+    </string-array>
+
+    <string-array name="lalumiere_rooms">
+        <item>108</item>
+        <item>114</item>
+        <item>130</item>
+        <item>136</item>
+        <item>140</item>
+        <item>154</item>
+        <item>160</item>
+        <item>166</item>
+        <item>172</item>
+        <item>175</item>
+        <item>180</item>
+        <item>184</item>
+        <item>186</item>
+        <item>188</item>
+        <item>192</item>
+        <item>202</item>
+        <item>204</item>
+        <item>206</item>
+        <item>210</item>
+        <item>216</item>
+        <item>222</item>
+        <item>232</item>
+        <item>254</item>
+        <item>262</item>
+        <item>272</item>
+        <item>280</item>
+        <item>288</item>
+        <item>292</item>
+    </string-array>
+
+    <string-array name="cudahy_rooms">
+        <item>101</item>
+        <item>108</item>
+        <item>114</item>
+        <item>118</item>
+        <item>120</item>
+        <item>126</item>
+        <item>128</item>
+        <item>131</item>
+        <item>137</item>
+        <item>143</item>
+        <item>145</item>
+        <item>151</item>
+    </string-array>
+
+    <string-array name="language_codes">
+        <item>en</item>
+        <item>es</item>
+        <item>zh</item>
+    </string-array>
+</resources>
