@@ -7,6 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.content.res.Configuration;
+import android.widget.AdapterView;
+import android.content.SharedPreferences;
+import android.content.Context;
 import androidx.appcompat.app.AppCompatDelegate;
 import android.widget.Button;
 
@@ -14,6 +18,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.mapmarq_draft1.R;
+
+import java.util.Locale;
 
 public class SettingsFragment extends Fragment {
 
@@ -25,7 +31,7 @@ public class SettingsFragment extends Fragment {
         Spinner languageSpinner = root.findViewById(R.id.spinner_language);
 
         // Empty adapter for now, update later with languages.
-        String[] languages = {"English", "Español", "中國人"};
+        String[] languages = {"English", "Español", "中文"};
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 requireContext(),
@@ -36,6 +42,30 @@ public class SettingsFragment extends Fragment {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         languageSpinner.setAdapter(adapter);
+
+        languageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                String[] codes = {"en", "es", "zh"};
+                String selectedCode = codes[position];
+
+                // Load previously saved language
+                SharedPreferences prefs = requireContext().getSharedPreferences("settings", Context.MODE_PRIVATE);
+                String currentCode = prefs.getString("language", "en");
+
+                // Only apply and recreate if different
+                if (!selectedCode.equals(currentCode)) {
+                    prefs.edit().putString("language", selectedCode).apply();
+                    setLocale(selectedCode);
+                    requireActivity().recreate();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) { }
+        });
+
 
         // 2. Theme button setup (add this right after the spinner)
         Button themeButton = root.findViewById(R.id.button_change_theme);
@@ -53,5 +83,18 @@ public class SettingsFragment extends Fragment {
 
         return root;
     }
+    private void setLocale(String langCode) {
+        Locale locale = new Locale(langCode);
+        Locale.setDefault(locale);
+
+        Configuration config = new Configuration();
+        config.setLocale(locale);
+
+        requireContext().getResources().updateConfiguration(
+                config,
+                requireContext().getResources().getDisplayMetrics()
+        );
+    }
 }
+
 
