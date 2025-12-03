@@ -79,7 +79,8 @@ public class SavedLocationsFragment extends Fragment {
         List<String> currentLocations = savedLocationsViewModel.getSavedLocations().getValue();
 
         if (currentLocations == null || currentLocations.isEmpty()) {
-            Toast.makeText(getContext(), "No locations to remove.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), getString(R.string.no_removable_locations), Toast.LENGTH_SHORT).show();
+
             return;
         }
 
@@ -87,7 +88,7 @@ public class SavedLocationsFragment extends Fragment {
         final CharSequence[] items = currentLocations.toArray(new CharSequence[0]);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
-        builder.setTitle("Select a Location to Remove");
+        builder.setTitle(getString(R.string.select_remove_location));
         builder.setItems(items, (dialog, which) -> {
             // 'which' is the index of the item that was tapped
             String locationToRemove = (String) items[which];
@@ -98,7 +99,7 @@ public class SavedLocationsFragment extends Fragment {
 
     private void showBuildingSelectionDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
-        builder.setTitle("Select a Building")
+        builder.setTitle(getString(R.string.select_building))
                 .setItems(buildings, (dialog, which) -> {
                     String selectedBuilding = buildings[which];
                     showNumberSelectionDialog(selectedBuilding);
@@ -112,7 +113,7 @@ public class SavedLocationsFragment extends Fragment {
         roomList.remove("Select a room");
 
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
-        builder.setTitle("Select a Room Number")
+        builder.setTitle(getString(R.string.select_room))
                 .setItems(roomList.toArray(new String[0]), (dialog, which) -> {
                     String selectedRoom = roomList.get(which);
                     savedLocationsViewModel.addLocation(building, selectedRoom);
@@ -126,4 +127,5 @@ public class SavedLocationsFragment extends Fragment {
         binding = null;
     }
 }
+
 
